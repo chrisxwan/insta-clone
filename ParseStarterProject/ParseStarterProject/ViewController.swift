@@ -11,6 +11,11 @@ class ViewController: UIViewController {
     
     @IBOutlet var username: UITextField!
     @IBOutlet var password: UITextField!
+    @IBOutlet var signupButton: UIButton!
+    @IBOutlet var loginButton: UIButton!
+
+    @IBOutlet var registeredLabel: UILabel!
+    var isRegistered = false
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     
     func displayAlert(title: String, message: String) {
@@ -32,29 +37,56 @@ class ViewController: UIViewController {
             view.addSubview(activityIndicator)
             activityIndicator.startAnimating()
             UIApplication.sharedApplication().beginIgnoringInteractionEvents()
-            
-            var user = PFUser()
-            user.username = username.text
-            user.password = password.text
-            
             var errorMessage = "Please try again later"
-            
-            user.signUpInBackgroundWithBlock({ (success, error) -> Void in
-                self.activityIndicator.stopAnimating()
-                UIApplication.sharedApplication().endIgnoringInteractionEvents()
-                if(error == nil) {
-                    
-                } else {
-                    if let errorString = error!.userInfo["error"] as? String {
-                        errorMessage = errorString
-                        self.displayAlert("Failed Signup", message: errorMessage)
-                    }
-                }
+            if(!isRegistered) {
+                var user = PFUser()
+                user.username = username.text
+                user.password = password.text
                 
-            })
+                
+                user.signUpInBackgroundWithBlock({ (success, error) -> Void in
+                    self.activityIndicator.stopAnimating()
+                    UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                    if(error == nil) {
+                        
+                    } else {
+                        if let errorString = error!.userInfo["error"] as? String {
+                            errorMessage = errorString
+                            self.displayAlert("Failed Signup", message: errorMessage)
+                        }
+                    }
+                    
+                })
+            } else {
+                PFUser.logInWithUsernameInBackground(username.text!, password: password.text!, block: {( user, error) -> Void in
+                    self.activityIndicator.stopAnimating()
+                    UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                    if(user != nil) {
+                    } else {
+                        if let errorString = error!.userInfo["error"] as? String {
+                            errorMessage = errorString
+                        }
+                        self.displayAlert("Failed Login", message: errorMessage)
+                    }
+                    
+                })
+            }
+            
+            
         }
     }
     @IBAction func login(sender: AnyObject) {
+        if(!isRegistered) {
+            signupButton.setTitle("Login", forState: UIControlState.Normal)
+            loginButton.setTitle("Signup", forState: UIControlState.Normal)
+            registeredLabel.text = "Not registered?"
+            isRegistered = !isRegistered
+        } else {
+            signupButton.setTitle("Signup", forState: UIControlState.Normal)
+            loginButton.setTitle("Login", forState: UIControlState.Normal)
+            registeredLabel.text = "Already registered?"
+            isRegistered = !isRegistered
+        }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
