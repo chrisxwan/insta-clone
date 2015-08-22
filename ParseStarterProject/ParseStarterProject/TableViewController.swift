@@ -13,7 +13,8 @@ class TableViewController: UITableViewController {
     
     var usernames = [""]
     var userids = [""]
-
+    var isFollowing = ["":false]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         var query = PFUser.query()
@@ -21,15 +22,32 @@ class TableViewController: UITableViewController {
             if let users = objects {
                 self.usernames.removeAll(keepCapacity: true)
                 self.userids.removeAll(keepCapacity: true)
+                self.isFollowing.removeAll(keepCapacity: true)
                 for object in users {
                     if let user = object as? PFUser {
-                        self.usernames.append(user.username!)
-                        self.userids.append(user.objectId!)
+                        if(user.objectId! != PFUser.currentUser()?.objectId!) {
+                            self.usernames.append(user.username!)
+                            self.userids.append(user.objectId!)
+                            let followerQuery = PFQuery(className: "Followers")
+                            followerQuery.whereKey("follower", equalTo: PFUser.currentUser()!.objectId!)
+                            followerQuery.whereKey("following", equalTo: user.objectId!)
+                            followerQuery.findObjectsInBackgroundWithBlock({ (object, error) -> Void in
+                                if let objects = object {
+                                    if(objects.count > 0) {
+                                        self.isFollowing[user.objectId!] = true
+                                    } else {
+                                        self.isFollowing[user.objectId!] = false
+                                    }
+                                }
+                                if(self.isFollowing.count == self.usernames.count) {
+                                    self.tableView.reloadData()
+                                }
+                            })
+                        }
                     }
                 }
             }
         })
-        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -47,24 +65,51 @@ class TableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return usernames.count
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
 
-        // Configure the cell...
+        cell.textLabel?.text = usernames[indexPath.row]
+        
+        if(isFollowing[userids[indexPath.row]] == true) {
+            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        }
 
         return cell
     }
-    */
 
+
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var cell: UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
+        if(!isFollowing[userids[indexPath.row]]!) {
+            var following = PFObject(className: "Followers")
+            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+            following["following"] = userids[indexPath.row]
+            following["follower"] = PFUser.currentUser()?.objectId
+            following.saveInBackground()
+            print(indexPath.row)
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryType.None
+            var followerQuery = PFQuery(className: "Followers")
+            followerQuery.whereKey("follower", equalTo: PFUser.currentUser()!.objectId!)
+            followerQuery.whereKey("following", equalTo: userids[indexPath.row])
+            followerQuery.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
+                if let objects = objects {
+                    for object in objects {
+                        object.deleteInBackground()
+                    }
+                }
+            })
+        }
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
