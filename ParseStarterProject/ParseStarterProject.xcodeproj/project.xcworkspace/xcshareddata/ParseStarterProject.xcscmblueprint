@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "8396A66999E8892678C630873F8440AF564A74CA",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "8396A66999E8892678C630873F8440AF564A74CA" : 0,
+    "C21B2212EBADD1B2754EBC5C452A374D84916E17" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "64CCB2C5-79E0-4BEA-812F-82FAD817B025",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "8396A66999E8892678C630873F8440AF564A74CA" : "insta-clone\/",
+    "C21B2212EBADD1B2754EBC5C452A374D84916E17" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "ParseStarterProject",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 203,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ParseStarterProject\/ParseStarterProject.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:chrisxwan\/insta-clone.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8396A66999E8892678C630873F8440AF564A74CA"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:chrisxwan\/insta-clone.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C21B2212EBADD1B2754EBC5C452A374D84916E17"
+    }
+  ]
+}
