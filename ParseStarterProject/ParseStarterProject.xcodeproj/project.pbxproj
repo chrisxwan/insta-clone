@@ -23,6 +23,8 @@
 		8C2D04951B87FBDD000F483C /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2D04941B87FBDD000F483C /* TableViewController.swift */; };
 		8C957D401B88F5D200A58A3E /* male-silhouette.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8C957D3F1B88F5D200A58A3E /* male-silhouette.jpg */; };
 		8C957D421B88F7F500A58A3E /* PostImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C957D411B88F7F500A58A3E /* PostImageViewController.swift */; };
+		8C957D441B8969DA00A58A3E /* cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C957D431B8969DA00A58A3E /* cell.swift */; };
+		8C957D461B896B0600A58A3E /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C957D451B896B0600A58A3E /* FeedTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,8 @@
 		8C2D04941B87FBDD000F483C /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		8C957D3F1B88F5D200A58A3E /* male-silhouette.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "male-silhouette.jpg"; sourceTree = "<group>"; };
 		8C957D411B88F7F500A58A3E /* PostImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostImageViewController.swift; sourceTree = "<group>"; };
+		8C957D431B8969DA00A58A3E /* cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cell.swift; sourceTree = "<group>"; };
+		8C957D451B896B0600A58A3E /* FeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +96,8 @@
 				8C2D04941B87FBDD000F483C /* TableViewController.swift */,
 				8C957D3F1B88F5D200A58A3E /* male-silhouette.jpg */,
 				81BA814E1A49DA1800E65899 /* Main.storyboard */,
+				8C957D451B896B0600A58A3E /* FeedTableViewController.swift */,
+				8C957D431B8969DA00A58A3E /* cell.swift */,
 				8C957D411B88F7F500A58A3E /* PostImageViewController.swift */,
 				81BA81511A49DA1800E65899 /* Images.xcassets */,
 				81BA81481A49DA1800E65899 /* Supporting Files */,
@@ -222,8 +228,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C957D421B88F7F500A58A3E /* PostImageViewController.swift in Sources */,
+				8C957D461B896B0600A58A3E /* FeedTableViewController.swift in Sources */,
 				81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */,
 				8C2D04951B87FBDD000F483C /* TableViewController.swift in Sources */,
+				8C957D441B8969DA00A58A3E /* cell.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

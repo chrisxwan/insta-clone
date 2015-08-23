@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8152.3" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Gfm-Nx-3eW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8152.3" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Wqe-Nn-nGb">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8124.4"/>
@@ -151,6 +151,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="User List" id="F2x-Hw-SqW">
+                        <barButtonItem key="leftBarButtonItem" title="Feed" id="KBK-mY-YCM">
+                            <connections>
+                                <segue destination="Wqe-Nn-nGb" kind="show" id="Ewu-lo-TYy"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Post" id="Y3V-gD-AsZ">
                             <connections>
                                 <segue destination="Gfm-Nx-3eW" kind="show" id="TVI-nQ-ger"/>
@@ -232,6 +237,74 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PGq-p0-tKJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1088.5" y="1202.5"/>
+        </scene>
+        <!--Your Feed-->
+        <scene sceneID="hiX-CD-iXs">
+            <objects>
+                <tableViewController title="Your Feed" id="Wqe-Nn-nGb" customClass="FeedTableViewController" customModule="ParseStarterProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="277" sectionHeaderHeight="22" sectionFooterHeight="22" id="Kzm-Gk-M5t">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="277" id="FVW-rj-42t" customClass="cell" customModule="ParseStarterProject" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="86" width="375" height="277"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FVW-rj-42t" id="Xpa-Tz-Lkj">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="276.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eEx-Xs-VcX">
+                                            <rect key="frame" x="55" y="19" width="264" height="185"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="185" id="dqh-Ja-oCd"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VW5-T9-PLx">
+                                            <rect key="frame" x="33" y="212" width="308" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N8J-TV-mDN">
+                                            <rect key="frame" x="53" y="232" width="266" height="30.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="eEx-Xs-VcX" firstAttribute="leading" secondItem="Xpa-Tz-Lkj" secondAttribute="leadingMargin" constant="47" id="0HK-N9-aPj"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="N8J-TV-mDN" secondAttribute="bottom" constant="6" id="0ex-Ih-pmh"/>
+                                        <constraint firstItem="VW5-T9-PLx" firstAttribute="top" secondItem="eEx-Xs-VcX" secondAttribute="bottom" constant="8" id="1WG-JJ-dwI"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="eEx-Xs-VcX" secondAttribute="trailing" constant="48" id="5dw-8w-yNc"/>
+                                        <constraint firstItem="N8J-TV-mDN" firstAttribute="leading" secondItem="Xpa-Tz-Lkj" secondAttribute="leadingMargin" constant="45" id="7dC-YZ-CM2"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="VW5-T9-PLx" secondAttribute="bottom" constant="35.5" id="QSQ-Fk-77Q"/>
+                                        <constraint firstItem="VW5-T9-PLx" firstAttribute="top" secondItem="eEx-Xs-VcX" secondAttribute="bottom" constant="8" id="Sgf-7u-ftp"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="N8J-TV-mDN" secondAttribute="trailing" constant="48" id="XAR-Hs-i4R"/>
+                                        <constraint firstItem="VW5-T9-PLx" firstAttribute="leading" secondItem="Xpa-Tz-Lkj" secondAttribute="leadingMargin" constant="25" id="bmo-VY-Ncv"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="VW5-T9-PLx" secondAttribute="trailing" constant="26" id="dah-k0-D78"/>
+                                        <constraint firstItem="N8J-TV-mDN" firstAttribute="top" secondItem="eEx-Xs-VcX" secondAttribute="bottom" constant="28" id="mMM-7c-rYu"/>
+                                        <constraint firstItem="eEx-Xs-VcX" firstAttribute="top" secondItem="Xpa-Tz-Lkj" secondAttribute="topMargin" constant="11" id="tTi-SI-RsA"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="message" destination="N8J-TV-mDN" id="xCO-uJ-LKh"/>
+                                    <outlet property="postedImage" destination="eEx-Xs-VcX" id="ysd-uR-xua"/>
+                                    <outlet property="username" destination="VW5-T9-PLx" id="sHL-81-Quj"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Wqe-Nn-nGb" id="GDb-ki-hXb"/>
+                            <outlet property="delegate" destination="Wqe-Nn-nGb" id="tUJ-Qo-d12"/>
+                        </connections>
+                    </tableView>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Ec-ZG-wj9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1562.5" y="1210.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="y4z-rp-KRy">
